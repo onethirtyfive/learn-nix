@@ -49,7 +49,8 @@ Nix is an inkblot test. Dr. Scrappydev will diagnose you if you talk about
 purity; Dr. Haskell will diagnose you unless you see lambda calculus. In the
 real world, early Nix adopters have been seasoned devs who prefer:
 
-- [_simpler_ work products over _easier_ work products](./tidbits/A_simplicity-vs-difficulty.md)
+- [_simpler_ work products over _easier_ work
+  products](./tidbits/A_simplicity-vs-difficulty.md)
 - adoption of designs forcing reckoning about failures _early_; restated, a
   preference for leveraging rather than avoiding computers' eternal pickiness
 - building small irrefutable solutions, composing them into bigger irrefutable
