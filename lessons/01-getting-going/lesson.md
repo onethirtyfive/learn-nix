@@ -1,12 +1,16 @@
-## Getting Set Up
+# Getting Going
 
-Fire up a **new** terminal. What version of Nix do you have? (omit `#`)
+## Kicking the Tires
+
+Fire up a **new** terminal. Let's see what the Nix installer installed.
 Any modern version (>=2.18) should do for us:
 
 ```console
 # nix --version
 nix (Nix) 2.22.1
 ```
+
+Note: omit `#` from commands you enter--it represents a prompt!
 
 ## Enabling Nix Features
 
@@ -21,8 +25,8 @@ correct nix config directory for your user exists:
 
 There are notable advantages to using an in-terminal editor for editing system-
 level files. GUIs can affect file permissions in weird ways. I've also had
-problems with `nano` and line endings, so we'll use `neovim`. Take 3 minutes to
-learn just enough to edit and exit an editor of your liking. It's worth it.
+problems with `nano` and line endings, so we'll use neovim. Take a few minutes
+to learn enough to edit and exit an editor of your liking. It's worth it.
 
 One of Nix's best tricks is the ability to make _ad hoc_ (just-in-time) shells
 with only the packages you want. These packages are wrapped together with _all_
@@ -61,6 +65,8 @@ No changes made, so `:q!` will get you out of the editor:
 # nix run 'nixpkgs#neovim' -- nvim ~/.config/nix/nix.conf
 ```
 
+You can ask `nix` command for `--help` on it or on any of its subcommands.
+
 Nix will only ever build things once for any set of inputs. What does that mean?
 In plain English, something like this:
 
@@ -70,17 +76,15 @@ In plain English, something like this:
 You can quite literally _prebuild_ that version and copy closures between nix
 stores and both hosts will have that exact version of software.
 
-Let's "garbage collect" ("gc") that to keep things tidy. Just wait till it exits:
+Let's "garbage collect" ("gc") your system to keep things tidy:
 
 ```console
 # nix store gc -v
 72 store paths deleted, 411.24 MiB freed
 ```
 
-You can ask `nix` command for `--help` on it or on any of its subcommands.
-
 <details>
-   <summary>**On legacy `nix-` commands...**</summary>
+   <summary><str>On legacy `nix-` commands...</str></summary>
 You should know: any nix command which starts with `nix-` is from the old
 world. (Examples: `nix-shell`, `nix-store`, `nix-repl`, `nix-collect-garbage`,
 and more.) From time to time, they still have their uses. This happens often:
@@ -126,9 +130,8 @@ utside that shell, the packages remain installed but unusable.
 - Look for packages on [https://search.nixos.org](https://search.nix.org)--be
   sure you're searching for _packages_ and not NixOS _options_. Make an ad hoc
   shell with something interesting. Don't forget to `exit` when you're done.
-- What other commands does the modern CLI offer? You can see with a bit of advice
-  from the beginning of the lesson. (once you're looking at it: `space` goes down
-  a page and `q` exits)
+- What other commands does the modern CLI offer? You can see with a bit of
+  advice above. (once you set it: `space` goes down a page and `q` exits)
 
 ## Recap
 
