@@ -14,28 +14,30 @@ Note: omit `#` from commands you enter--it represents a prompt!
 
 ## Enabling Nix Features
 
-Let's edit your user-level nix configuration to enable some "experimental"
-features. This designation is vestigial: the Nix ecosystem depends on these
-features now, and they will be defaults by the end of 2024. Let's ensure the
-correct nix config directory for your user exists:
+Let's edit your user-level nix configuration to enable some "experimental" Nix
+features. The "experimental" tag is vestigial: the Nix ecosystem depends on
+these features now, and they will be defaults by the end of 2024. Let's ensure
+the correct nix config directory for your user exists:
 
 ```console
 # mkdir -p ~/.config/nix
 ```
 
-There are notable advantages to using an in-terminal editor for editing system-
-level files. GUIs can affect file permissions in weird ways. I've also had
-problems with `nano` and line endings, so we'll use neovim. Take a few minutes
-to learn enough to edit and exit an editor of your liking. It's worth it.
+There are notable advantages to using an in-terminal editor for editing
+system-level files. GUIs can affect file permissions in weird ways. I've also
+had problems with `nano` and line endings, so I'll guide you in neovim.
+
+💫 Take a few minutes to learn enough to edit and exit an editor of your
+liking. It's worth it.
 
 One of Nix's best tricks is the ability to make _ad hoc_ (just-in-time) shells
-with only the packages you want. These packages are wrapped together with _all_
-dependencies, recursively, in a bubble called "closure". Nix packages don't
-share dependencies with other packages--everything is baked in, all the way down,
-for every package! Surprisingly, this does not lead to bloat, because two
-packages depending on the exact same thing point at the same place.
+with only the packages you require. These packages come with their entire
+dependency tree, all the way down, which is called a "closure". Nix reuses
+packages in one way only: two packages depending on the exact same thing point
+to the same directory in the Nix store, which is located at `/nix/store`.
+Everything Nix builds goes in the Nix store.
 
-Run this command. You'll see Nix download neovim and its deps, then start:
+Run this command. Nix downloads neovim and its deps, then plops you in it:
 
 ```console
 # nix-shell -p neovim --command "nvim ~/.config/nix/nix.conf"
@@ -58,17 +60,17 @@ the editor. Neovim exits and drops you back into your terminal. Neat.
 
 ## Using the Modern `nix` command
 
-Let's use the newly available `nix` command to what we just did again
-No changes made, so `:q!` will get you out of the editor:
+Let's use the newly available `nix` command to repeat what we just did.
 
 ```console
 # nix run 'nixpkgs#neovim' -- nvim ~/.config/nix/nix.conf
 ```
 
-You can ask `nix` command for `--help` on it or on any of its subcommands.
+No changes made, so `:q!` exits. You can ask `nix` command for `--help` on it
+or on any of its subcommands.
 
-Nix will only ever build things once for any set of inputs. What does that mean?
-In plain English, something like this:
+Nix will only ever build things once for any set of inputs. What does that
+mean? In plain English, something like this:
 
 > Please build `python311`, with no tweaks, for `aarch64-darwin` (mac, apple
 > silicon), where `nixpkgs` is at git rev `dd868b7`
@@ -96,8 +98,8 @@ modern commands: `nix` has a suite of tidily organized subcommands.
 ## More on Ad-Hoc Shells
 
 Let's use the old world `nix-shell` command for its ability to make "pure"
-temporary shells. Here, `--pure` means "only what has been specified is
-available, absolutely nothing from the system":
+temporary shells. Here, `--pure` means _only_ what you ask for will be
+available, absolutely nothing "leaks in" from your system. Let's noodle:
 
 ```console
 # nix-shell --pure -p nodejs python3 ruby
