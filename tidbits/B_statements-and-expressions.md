@@ -20,7 +20,7 @@ Any combination of expressions is also an expression:
 - `"have it " + "your way"`
 - `[3, 4]` + `[1,2].reduce((x) => x * 2)`
 - `(x) => ((y) => x + y)`
-- `if (x % 3 == 0) then "divisible" else "indivisible"
+- `if (x % 3 == 0) then "divisible" else "indivisible"`
 
 If it evaluates to a stable value, it's an expression!
 
@@ -54,7 +54,7 @@ for broad effects on volatile inputs like filesystems and networks. They often
 change ("mutate") data, and try to wrangle all possible states with logic.
 This mainstream mode of coding is called _imperative programming_.
 
-## Functional Progamming
+## Expression Languages and Functional Progamming
 
 There exists an entire set of languages which have no statements called
 _expression languages_. These language are a subset of _functional programming_,
@@ -62,4 +62,4 @@ and the Nix Expression Language is one such expression language.
 
 It is well suited only to defining packages in the Nix universe. But, as you'll
 see, it's very good at it. The nix package manager uses these values to do its
-work--the work of *realizing* the packages from these values.
+work--the work of *realizing* (building) packages for any supported system.
