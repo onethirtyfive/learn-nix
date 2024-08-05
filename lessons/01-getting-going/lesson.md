@@ -31,9 +31,9 @@ to learn enough to edit and exit an editor of your liking. It's worth it.
 One of Nix's best tricks is the ability to make _ad hoc_ (just-in-time) shells
 with only the packages you want. These packages are wrapped together with _all_
 dependencies, recursively, in a bubble called "closure". Nix packages don't
-dependencies with other packages--everything is baked in, for every package!
-Surprisingly, this does not lead to bloat, because two packages truly depending
-on the same version will point to the same place.
+share dependencies with other packages--everything is baked in, all the way down,
+for every package! Surprisingly, this does not lead to bloat, because two
+packages depending on the exact same thing point at the same place.
 
 Run this command. You'll see Nix download neovim and its deps, then start:
 
