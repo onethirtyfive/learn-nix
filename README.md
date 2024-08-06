@@ -86,7 +86,7 @@ learn how to use Nix in the comfort of your own operating system.
 ## Resources
 
 - [Nix Pills](https://nixos.org/guides/nix-pills/) - Bite-sized guides, or
-  "pills"
+  "pills", for gradual--but deep--knowledge about Nix
 - [@ChrisMcDonough on YouTube](https://www.youtube.com/@ChrisMcDonough/videos)
   \- Often hilarious, always informative and accessible Nix noodlings
 - [nix.dev](https://nix.dev/) - References, tutorials, and more
